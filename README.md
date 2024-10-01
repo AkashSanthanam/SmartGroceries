@@ -3,7 +3,8 @@
 ## 👋 Introduction
   **_Nature Crunch_** is a sample grocery delivery website offering all essential functionalities, along with additional features like nutrient profile management, personalized nutrition goals, and a recommendation system for healthier choices.
 
-  ![image](https://github.com/user-attachments/assets/9e7efffb-a6b9-4cf1-8947-09af3053fc85)
+  ![image](https://github.com/user-attachments/assets/1071b43a-cd6d-46a3-a648-ca09ff9b5f2e)
+
 
 The **Goal** of this project was to learn the entire process of designing and developing a clean, functional, and user-friendly UI for an e-commerce store. This involves not only creating an aesthetically pleasing and intuitive interface but also ensuring that the user experience is smooth and efficient.
 
