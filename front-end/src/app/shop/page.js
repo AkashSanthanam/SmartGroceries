@@ -1,6 +1,6 @@
 import Mainnavbar from "@/components/Mainnavbar";
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_VERCEL_URL || "";
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ? process.env.NEXT_PUBLIC_BASE_URL : process.env.NEXT_PUBLIC_VERCEL_URL ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : "";
 import React from "react";
 import CategoriesBar from "@/components/CategoriesBar";
 import { Separator } from "@radix-ui/react-separator";

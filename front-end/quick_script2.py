@@ -5,10 +5,10 @@ import re
 base_dir = "C:/Users/akash/Documents/School/McMaster/Third Year/SideProjectCopies/SmartGroceries/front-end\src/app/shop"  # Replace with the actual path to your 'shop' folder
 
 # The old baseUrl declaration that needs to be replaced
-old_base_url_declaration = 'const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";'
-
+old_base_url_declaration = 'const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_VERCEL_URL || "";'
 # The new baseUrl declaration
-new_base_url_declaration = 'const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_VERCEL_URL || "";'
+new_base_url_declaration = 'const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ? process.env.NEXT_PUBLIC_BASE_URL : process.env.NEXT_PUBLIC_VERCEL_URL ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : "";'
+
 
 # Function to update the baseUrl declaration
 def update_file(file_path):
