@@ -1,12 +1,19 @@
-
 import React from "react";
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ? process.env.NEXT_PUBLIC_BASE_URL : process.env.NEXT_PUBLIC_VERCEL_URL ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : "";
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL
+  ? process.env.NEXT_PUBLIC_BASE_URL
+  : process.env.NEXT_PUBLIC_VERCEL_URL
+  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+  : "";
 
 import ProductCard from "@/components/ProductCard";
 
 export default async function Page() {
   const res = await fetch(`${baseUrl}/data/bakery/bagels.json`);
+  if (!res.ok) {
+    console.error("Failed to fetch:", res.statusText);
+    return <div>Error fetching data</div>;
+  }
   const data = await res.json();
   const columns = 6;
   return (
