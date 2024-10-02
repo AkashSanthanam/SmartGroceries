@@ -1,6 +1,6 @@
 import React from "react";
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_VERCEL_URL || "";
 import {
   Carousel,
   CarouselContent,

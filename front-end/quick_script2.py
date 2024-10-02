@@ -4,24 +4,19 @@ import re
 # Define the base directory where your project is located
 base_dir = "C:/Users/akash/Documents/School/McMaster/Third Year/SideProjectCopies/SmartGroceries/front-end\src/app/shop"  # Replace with the actual path to your 'shop' folder
 
-# The regex pattern to match the fetch request line that needs modification
-fetch_pattern = r'fetch\("http://localhost:3000(.*?)\.json"\)'
+# The old baseUrl declaration that needs to be replaced
+old_base_url_declaration = 'const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";'
 
-# The baseUrl declaration line
-base_url_declaration = 'const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";'
+# The new baseUrl declaration
+new_base_url_declaration = 'const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || process.env.NEXT_PUBLIC_VERCEL_URL || "";'
 
-# Function to update the fetch line and insert baseUrl declaration
+# Function to update the baseUrl declaration
 def update_file(file_path):
     with open(file_path, 'r') as file:
         content = file.read()
 
-    # Check if baseUrl declaration is already present
-    if base_url_declaration not in content:
-        # Insert baseUrl declaration after the first import statement
-        content = re.sub(r'(import .*?;)', r'\1\n\n' + base_url_declaration, content, 1)
-
-    # Replace the fetch URL with the new format
-    updated_content = re.sub(fetch_pattern, r'fetch(`${baseUrl}\1.json`)', content)
+    # Replace the old baseUrl declaration with the new one
+    updated_content = content.replace(old_base_url_declaration, new_base_url_declaration)
 
     # Check if there was any change, and write it back to the file
     if content != updated_content:
