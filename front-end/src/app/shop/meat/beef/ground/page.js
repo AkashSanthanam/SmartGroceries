@@ -1,10 +1,12 @@
 
 import React from "react";
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
+
 import ProductCard from "@/components/ProductCard";
 
 export default async function Page() {
-  const res = await fetch("http://localhost:3000/data/meat/beef/ground.json");
+  const res = await fetch(`${baseUrl}/data/meat/beef/ground.json`);
   const data = await res.json();
   const columns = 6;
   return (

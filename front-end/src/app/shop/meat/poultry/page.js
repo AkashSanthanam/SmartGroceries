@@ -1,4 +1,6 @@
 import React from "react";
+
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
 import {
   Carousel,
   CarouselContent,
@@ -23,7 +25,7 @@ export default async function Page() {
   const darkData = await darkChicken.json();
   const limitedDarkData = darkData.slice(0, 8);
 
-  const duck = await fetch("http://localhost:3000/data/meat/poultry/duck.json");
+  const duck = await fetch(`${baseUrl}/data/meat/poultry/duck.json`);
   const duckData = await duck.json();
 
   const turkey = await fetch(

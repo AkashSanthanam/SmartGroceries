@@ -1,4 +1,6 @@
 import React from "react";
+
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
 import {
   Carousel,
   CarouselContent,
@@ -11,7 +13,7 @@ import { Button } from "@/components/ui/button";
 import ProductCard from "@/components/ProductCard";
 
 export default async function Page() {
-  const lamb = await fetch("http://localhost:3000/data/meat/veal/veal.json");
+  const lamb = await fetch(`${baseUrl}/data/meat/veal/veal.json`);
   const lambData = await lamb.json();
 
   const columns = 6;

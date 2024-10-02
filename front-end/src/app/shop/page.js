@@ -1,4 +1,6 @@
 import Mainnavbar from "@/components/Mainnavbar";
+
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
 import React from "react";
 import CategoriesBar from "@/components/CategoriesBar";
 import { Separator } from "@radix-ui/react-separator";
@@ -33,13 +35,13 @@ function shuffleArray(array, seed) {
 
 export default async function Page() {
   // Fetch all the data
-  const apples = await fetch("http://localhost:3000/data/fruits/apples.json");
+  const apples = await fetch(`${baseUrl}/data/fruits/apples.json`);
   const appleData = await apples.json();
 
-  const eggs = await fetch("http://localhost:3000/data/diary/eggs.json");
+  const eggs = await fetch(`${baseUrl}/data/diary/eggs.json`);
   const eggData = await eggs.json();
 
-  const buns = await fetch("http://localhost:3000/data/bakery/buns.json");
+  const buns = await fetch(`${baseUrl}/data/bakery/buns.json`);
   const bunData = await buns.json();
 
   const chicken = await fetch(
@@ -47,16 +49,16 @@ export default async function Page() {
   );
   const chickenData = await chicken.json();
 
-  const milk = await fetch("http://localhost:3000/data/diary/milk.json");
+  const milk = await fetch(`${baseUrl}/data/diary/milk.json`);
   const milkData = await milk.json();
 
-  const pasta = await fetch("http://localhost:3000/data/diary/pasta.json");
+  const pasta = await fetch(`${baseUrl}/data/diary/pasta.json`);
   const pastaData = await pasta.json();
 
-  const salmon = await fetch("http://localhost:3000/data/seafood/salmon.json");
+  const salmon = await fetch(`${baseUrl}/data/seafood/salmon.json`);
   const salmonData = await salmon.json();
 
-  const celery = await fetch("http://localhost:3000/data/veggies/celery.json");
+  const celery = await fetch(`${baseUrl}/data/veggies/celery.json`);
   const celeryData = await celery.json();
 
   const lettuce = await fetch(
@@ -69,7 +71,7 @@ export default async function Page() {
   );
   const mushroomsData = await mushrooms.json();
 
-  const herbs = await fetch("http://localhost:3000/data/veggies/herbs.json");
+  const herbs = await fetch(`${baseUrl}/data/veggies/herbs.json`);
   const herbData = await herbs.json();
 
   const milkSubset = milkData.slice(0, 3); // First 3 elements from apples

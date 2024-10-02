@@ -1,4 +1,6 @@
 import React from "react";
+
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
 import {
   Carousel,
   CarouselContent,
@@ -27,11 +29,11 @@ export default async function Page() {
   const precutData = await precut.json();
   const limitedPrecutData = precutData.slice(0, 6);
 
-  const ribs = await fetch("http://localhost:3000/data/meat/beef/ribs.json");
+  const ribs = await fetch(`${baseUrl}/data/meat/beef/ribs.json`);
   const ribsData = await ribs.json();
   const limitedRibsData = ribsData.slice(0, 12);
 
-  const steak = await fetch("http://localhost:3000/data/meat/beef/steak.json");
+  const steak = await fetch(`${baseUrl}/data/meat/beef/steak.json`);
   const steakData = await steak.json();
   const limitedSteakData = steakData.slice(0, 8);
 
