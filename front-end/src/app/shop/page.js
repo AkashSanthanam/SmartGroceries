@@ -13,7 +13,17 @@ import {
 } from "@/components/ui/carousel";
 import ProductCard from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
-
+import { apples } from "../../../public/data/fruits";
+import { eggs, milk, pasta } from "../../../public/data/diary";
+import { buns } from "../../../public/data/bakery";
+import { salmon } from "../../../public/data/seafood";
+import {
+  celery,
+  lettuce,
+  mushrooms,
+  herbs,
+} from "../../../public/data/veggies";
+import { dark } from "../../../public/data/chicken";
 
 const columns = 6;
 // Seeded random function
@@ -37,57 +47,19 @@ function shuffleArray(array, seed) {
 
 export default async function Page() {
   // Fetch all the data
-  const apples = await fetch(`${baseUrl}/data/fruits/apples.json`);
-  const appleData = await apples.json();
 
-  const eggs = await fetch(`${baseUrl}/data/diary/eggs.json`);
-  const eggData = await eggs.json();
-
-  const buns = await fetch(`${baseUrl}/data/bakery/buns.json`);
-  const bunData = await buns.json();
-
-  const chicken = await fetch(
-    "http://localhost:3000/data/meat/poultry/chicken/dark.json"
-  );
-  const chickenData = await chicken.json();
-
-  const milk = await fetch(`${baseUrl}/data/diary/milk.json`);
-  const milkData = await milk.json();
-
-  const pasta = await fetch(`${baseUrl}/data/diary/pasta.json`);
-  const pastaData = await pasta.json();
-
-  const salmon = await fetch(`${baseUrl}/data/seafood/salmon.json`);
-  const salmonData = await salmon.json();
-
-  const celery = await fetch(`${baseUrl}/data/veggies/celery.json`);
-  const celeryData = await celery.json();
-
-  const lettuce = await fetch(
-    "http://localhost:3000/data/veggies/lettuce.json"
-  );
-  const lettuceData = await lettuce.json();
-
-  const mushrooms = await fetch(
-    "http://localhost:3000/data/veggies/mushrooms.json"
-  );
-  const mushroomsData = await mushrooms.json();
-
-  const herbs = await fetch(`${baseUrl}/data/veggies/herbs.json`);
-  const herbData = await herbs.json();
-
-  const milkSubset = milkData.slice(0, 3); // First 3 elements from apples
-  const eggSubset = eggData.slice(0, 3); // First 2 elements from eggs
-  const bunSubset = bunData.slice(0, 1);
+  const milkSubset = milk.slice(0, 3); // First 3 elements from apples
+  const eggSubset = eggs.slice(0, 3); // First 2 elements from eggs
+  const bunSubset = buns.slice(0, 1);
 
   const seed = 12345; // Fixed seed value ensures same randomization each time
   const array1 = [...milkSubset, ...eggSubset, ...bunSubset];
   const shuffledArray1 = shuffleArray(array1, seed);
 
-  const chickenSubset = chickenData.slice(1, 3);
-  const appleSubset = appleData.slice(1, 3);
-  const pastaSubset = pastaData.slice(0, 3);
-  const salmonSubset = salmonData.slice(0, 3);
+  const chickenSubset = dark.slice(1, 3);
+  const appleSubset = apples.slice(1, 3);
+  const pastaSubset = pasta.slice(0, 3);
+  const salmonSubset = salmon.slice(0, 3);
 
   const array2 = [
     ...chickenSubset,
@@ -98,13 +70,12 @@ export default async function Page() {
 
   const shuffledArray2 = shuffleArray(array2, seed);
 
-  const celerySubset = celeryData.slice(0, 3);
-  const mushroomsSubset = mushroomsData.slice(0, 3);
-  const lettuceSubset = lettuceData.slice(0, 3);
+  const celerySubset = celery.slice(0, 3);
+  const mushroomsSubset = mushrooms.slice(0, 3);
+  const lettuceSubset = lettuce.slice(0, 3);
 
   const array3 = [...celerySubset, ...mushroomsSubset, ...lettuceSubset];
 
-  
   return (
     <div className="flex flex-col pt-8 bg-background-100 gap-4 w-full">
       <div className="ml-16">

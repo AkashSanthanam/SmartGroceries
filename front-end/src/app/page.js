@@ -23,47 +23,18 @@ import { MdOutlineStar } from "react-icons/md";
 import StarCard from "@/components/StarCard";
 import Footer from "@/components/Footer";
 
+// Data Imports
+import { apples } from "../../public/data/fruits";
+import { eggs, milk, pasta } from "../../public/data/diary";
+import { buns } from "../../public/data/bakery";
+import { salmon } from "../../public/data/seafood";
+import { celery, lettuce, mushrooms, herbs } from "../../public/data/veggies";
+import { dark } from "../../public/data/chicken";
+
 export default async function Home() {
-  // Fetch the data
-  const apples = await fetch("http://localhost:3000/data/fruits/apples.json");
-  const appleData = await apples.json();
-
-  const eggs = await fetch("http://localhost:3000/data/diary/eggs.json");
-  const eggData = await eggs.json();
-
-  const buns = await fetch("http://localhost:3000/data/bakery/buns.json");
-  const bunData = await buns.json();
-
-  const chicken = await fetch(
-    "http://localhost:3000/data/meat/poultry/chicken/dark.json"
-  );
-  const chickenData = await chicken.json();
-
-  const milk = await fetch("http://localhost:3000/data/diary/milk.json");
-  const milkData = await milk.json();
-
-  const pasta = await fetch("http://localhost:3000/data/diary/pasta.json");
-  const pastaData = await pasta.json();
-
-  const salmon = await fetch("http://localhost:3000/data/seafood/salmon.json");
-  const salmonData = await salmon.json();
-
-  const celery = await fetch("http://localhost:3000/data/veggies/celery.json");
-  const celeryData = await celery.json();
-
-  const lettuce = await fetch(
-    "http://localhost:3000/data/veggies/lettuce.json"
-  );
-  const lettuceData = await lettuce.json();
-
-  const mushrooms = await fetch(
-    "http://localhost:3000/data/veggies/mushrooms.json"
-  );
-  const mushroomsData = await mushrooms.json();
-
-  const randomArray1 = [appleData[0], eggData[0], bunData[0]];
-  const randomArray2 = [chickenData[0], milkData[0], salmonData[0]];
-  const randomArray3 = [celeryData[0], lettuceData[0], mushroomsData[0]];
+  const randomArray1 = [apples[0], eggs[0], buns[0]];
+  const randomArray2 = [dark[0], milk[0], salmon[0]];
+  const randomArray3 = [celery[0], lettuce[0], mushrooms[0]];
 
   return (
     <main className="flex min-h-screen bg-background-500 flex-col">
