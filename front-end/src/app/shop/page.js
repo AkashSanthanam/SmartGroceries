@@ -1,6 +1,6 @@
 import Mainnavbar from "@/components/Mainnavbar";
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ? process.env.NEXT_PUBLIC_BASE_URL : process.env.NEXT_PUBLIC_VERCEL_URL ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : "";
+const baseUrl = "http://localhost:3000/";
 import React from "react";
 import CategoriesBar from "@/components/CategoriesBar";
 import { Separator } from "@radix-ui/react-separator";
@@ -14,6 +14,8 @@ import {
 import ProductCard from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
 
+
+const columns = 6;
 // Seeded random function
 function seededRandom(seed) {
   let value = seed % 2147483647;
@@ -102,7 +104,7 @@ export default async function Page() {
 
   const array3 = [...celerySubset, ...mushroomsSubset, ...lettuceSubset];
 
-  const columns = 6;
+  
   return (
     <div className="flex flex-col pt-8 bg-background-100 gap-4 w-full">
       <div className="ml-16">
@@ -124,7 +126,7 @@ export default async function Page() {
           </Carousel>
         </section>
 
-        <section className="grid grid-cols-[auto_600px] w-full pt-10">
+        <section className="grid grid-cols-[auto_900px] w-full pt-10">
           <div className="flex flex-col gap-2">
             <h1 className="font-semibold text-2xl">Popular right now</h1>
             <p className="text-sm text-slate-500">
@@ -155,7 +157,7 @@ export default async function Page() {
           </div>
         </section>
 
-        <section className="grid grid-cols-[auto_600px] w-full pt-10">
+        <section className="grid grid-cols-[auto_900px] w-full pt-10">
           <div className="flex flex-col gap-2">
             <h1 className="font-semibold text-2xl">The best local eats</h1>
             <p className="text-sm text-slate-500">

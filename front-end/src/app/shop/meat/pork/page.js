@@ -10,30 +10,14 @@ import { Button } from "@/components/ui/button";
 
 import ProductCard from "@/components/ProductCard";
 
+import {
+  chopstenderloins,
+  ground,
+  precut,
+  ribsroasts,
+} from "../../../../../public/data/pork";
+
 export default async function Page() {
-  const chops = await fetch(
-    "http://localhost:3000/data/meat/pork/chops&tenderloins.json"
-  );
-  const chopsData = await chops.json();
-  const limitedChopsData = chopsData.slice(0, 8);
-
-  const ground = await fetch(
-    "http://localhost:3000/data/meat/pork/ground&sausage.json"
-  );
-  const groundData = await ground.json();
-  const limitedGroundData = groundData.slice(1, 8);
-
-  const precut = await fetch(
-    "http://localhost:3000/data/meat/pork/precut.json"
-  );
-  const precutData = await precut.json();
-
-  const ribs = await fetch(
-    "http://localhost:3000/data/meat/pork/ribsroasts&hams.json"
-  );
-  const ribsData = await ribs.json();
-  const limitedRibsData = ribsData.slice(0, 8);
-
   const columns = 6;
   return (
     <div className="flex flex-col w-full">
@@ -49,7 +33,7 @@ export default async function Page() {
         </div>
         <Carousel opts={{ align: "start" }} className="max-w-[89%] w-full pt-2">
           <CarouselContent className="gap-x-8 mx-2">
-            {limitedChopsData.map((item, index) => (
+            {chopstenderloins.map((item, index) => (
               <ProductCard
                 key={index}
                 item={item}
@@ -74,7 +58,7 @@ export default async function Page() {
         </div>
         <Carousel opts={{ align: "start" }} className="max-w-[89%] w-full pt-2">
           <CarouselContent className="gap-x-8 mx-2">
-            {limitedGroundData.map((item, index) => (
+            {ground.map((item, index) => (
               <ProductCard
                 key={index}
                 item={item}
@@ -99,7 +83,7 @@ export default async function Page() {
         </div>
         <Carousel opts={{ align: "start" }} className="max-w-[89%] w-full pt-2">
           <CarouselContent className="gap-x-8 mx-2">
-            {limitedRibsData.map((item, index) => (
+            {ribsroasts.map((item, index) => (
               <ProductCard
                 key={index}
                 item={item}
@@ -115,7 +99,7 @@ export default async function Page() {
       <section className="w-full pt-8">
         <h1 className="font-medium text-2xl px-16">Precut</h1>
         <div className="w-full grid grid-cols-6 pt-4 px-12 gap-x-2 gap-y-4 ">
-          {precutData.map((item, index) => (
+          {precut.map((item, index) => (
             <ProductCard
               key={index}
               item={item}

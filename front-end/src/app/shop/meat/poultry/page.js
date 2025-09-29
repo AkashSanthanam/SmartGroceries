@@ -1,6 +1,6 @@
 import React from "react";
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ? process.env.NEXT_PUBLIC_BASE_URL : process.env.NEXT_PUBLIC_VERCEL_URL ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : "";
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000/";
 import {
   Carousel,
   CarouselContent,
@@ -11,28 +11,16 @@ import {
 import { Button } from "@/components/ui/button";
 
 import ProductCard from "@/components/ProductCard";
+import { white } from "../../../../../public/data/chicken";
+import { dark } from "../../../../../public/data/chicken";
+import { turkey } from "../../../../../public/data/chicken";
+import { duck } from "../../../../../public/data/chicken";
 
+
+const columns = 6;
 export default async function Page() {
-  const whiteChicken = await fetch(
-    "http://localhost:3000/data/meat/poultry/chicken/dark.json"
-  );
-  const whiteData = await whiteChicken.json();
-  const limitedWhiteData = whiteData.slice(0, 8);
-
-  const darkChicken = await fetch(
-    "http://localhost:3000/data/meat/poultry/chicken/white.json"
-  );
-  const darkData = await darkChicken.json();
-  const limitedDarkData = darkData.slice(0, 8);
-
-  const duck = await fetch(`${baseUrl}/data/meat/poultry/duck.json`);
-  const duckData = await duck.json();
-
-  const turkey = await fetch(
-    "http://localhost:3000/data/meat/poultry/turkey.json"
-  );
-  const turkeyData = await turkey.json();
-  const limitedTurkeyData = turkeyData.slice(0, 8);
+  const limitedWhiteData = white.slice(0, 8);
+  const limitedDarkData = dark.slice(0, 8);
 
   const columns = 6;
   return (
@@ -92,7 +80,7 @@ export default async function Page() {
       <section className="w-full pt-8">
         <h1 className="font-medium text-2xl px-16">Turkey</h1>
         <div className="w-full grid grid-cols-6 pt-4 px-12 gap-x-2 gap-y-4 ">
-          {turkeyData
+          {turkey
             .filter((item) => item.Image) // Filters out items without an Image
             .map((item, index) => (
               <ProductCard
@@ -107,7 +95,7 @@ export default async function Page() {
       <section className="w-full pt-8">
         <h1 className="font-medium text-2xl px-16">Duck</h1>
         <div className="w-full grid grid-cols-6 pt-4 px-12 gap-x-2 gap-y-4 ">
-          {duckData
+          {duck
             .filter((item) => item.Image) // Filters out items without an Image
             .map((item, index) => (
               <ProductCard

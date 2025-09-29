@@ -1,6 +1,4 @@
 import React from "react";
-
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ? process.env.NEXT_PUBLIC_BASE_URL : process.env.NEXT_PUBLIC_VERCEL_URL ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}` : "";
 import {
   Carousel,
   CarouselContent,
@@ -11,39 +9,22 @@ import {
 import { Button } from "@/components/ui/button";
 
 import ProductCard from "@/components/ProductCard";
+import {
+  ground,
+  burgers,
+  precut,
+  ribs,
+  steak,
+} from "../../../../../public/data/beef";
 
 export default async function Page() {
-  const ground = await fetch(
-    "http://localhost:3000/data/meat/beef/ground.json"
-  );
-  const groundData = await ground.json();
-
-  const burgers = await fetch(
-    "http://localhost:3000/data/meat/beef/burgers.json"
-  );
-  const burgerData = await burgers.json();
-
-  const precut = await fetch(
-    "http://localhost:3000/data/meat/beef/precut.json"
-  );
-  const precutData = await precut.json();
-  const limitedPrecutData = precutData.slice(0, 6);
-
-  const ribs = await fetch(`${baseUrl}/data/meat/beef/ribs.json`);
-  const ribsData = await ribs.json();
-  const limitedRibsData = ribsData.slice(0, 12);
-
-  const steak = await fetch(`${baseUrl}/data/meat/beef/steak.json`);
-  const steakData = await steak.json();
-  const limitedSteakData = steakData.slice(0, 8);
-
   const columns = 6;
   return (
     <div className="flex flex-col w-full">
       <section className="w-full pt-8">
         <h1 className="font-medium text-2xl px-16">Ground</h1>
         <div className="w-full grid grid-cols-6 pt-4 px-12 gap-x-2 gap-y-4 ">
-          {groundData.map((item, index) => (
+          {ground.map((item, index) => (
             <ProductCard
               key={index}
               item={item}
@@ -56,7 +37,7 @@ export default async function Page() {
       <section className="w-full pt-8">
         <h1 className="font-medium text-2xl px-16">Burger</h1>
         <div className="w-full grid grid-cols-6 pt-4 px-12 gap-x-2 gap-y-4 ">
-          {burgerData
+          {burgers
             .filter((item) => item.Image) // Filters out items without an Image
             .map((item, index) => (
               <ProductCard
@@ -80,7 +61,7 @@ export default async function Page() {
         </div>
         <Carousel opts={{ align: "start" }} className="max-w-[89%] w-full pt-2">
           <CarouselContent className="gap-x-8 mx-2">
-            {limitedRibsData.map((item, index) => (
+            {ribs.map((item, index) => (
               <ProductCard
                 key={index}
                 item={item}
@@ -106,7 +87,7 @@ export default async function Page() {
         </div>
         <Carousel opts={{ align: "start" }} className="max-w-[87%] w-full pt-2">
           <CarouselContent className="gap-x-8 mx-2">
-            {limitedSteakData.map((item, index) => (
+            {steak.map((item, index) => (
               <ProductCard
                 key={index}
                 item={item}
@@ -122,7 +103,7 @@ export default async function Page() {
       <section className="w-full pt-8">
         <h1 className="font-medium text-2xl px-16">Precut</h1>
         <div className="w-full grid grid-cols-6 pt-4 px-12 gap-x-2 gap-y-4 ">
-          {limitedPrecutData.map((item, index) => (
+          {precut.map((item, index) => (
             <ProductCard
               key={index}
               item={item}

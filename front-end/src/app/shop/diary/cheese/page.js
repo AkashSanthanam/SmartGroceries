@@ -9,31 +9,22 @@ import {
 import { Button } from "@/components/ui/button";
 
 import ProductCard from "@/components/ProductCard";
+import {
+  block,
+  cream,
+  shredded,
+  sliced,
+} from "../../../../../public/data/cheese";
 
+const columns = 6;
 export default async function Page() {
-  const block = await fetch(
-    "http://localhost:3000/data/diary/cheese/block.json"
-  );
-  const blockData = await block.json();
-  const limitedBlockData = blockData.slice(0, 8);
+  const limitedBlockData = block.slice(0, 8);
 
-  const cream = await fetch(
-    "http://localhost:3000/data/diary/cheese/cream.json"
-  );
-  const creamData = await cream.json();
-  const limitedCreamData = creamData.slice(0, 8);
+  const limitedCreamData = cream.slice(0, 8);
 
-  const shredded = await fetch(
-    "http://localhost:3000/data/diary/cheese/shredded.json"
-  );
-  const shreddedData = await shredded.json();
-  const limitedShreddedData = shreddedData.slice(0, 8);
+  const limitedShreddedData = shredded.slice(0, 8);
 
-  const sliced = await fetch(
-    "http://localhost:3000/data/diary/cheese/sliced.json"
-  );
-  const slicedData = await sliced.json();
-  const limitedSlicedData = slicedData.slice(0, 8);
+  const limitedSlicedData = sliced.slice(0, 8);
 
   const columns = 6;
   return (

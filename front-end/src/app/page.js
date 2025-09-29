@@ -12,6 +12,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import Link from "next/link";
 
 // Icons
 import { FaArrowRightLong } from "react-icons/fa6";
@@ -24,6 +25,45 @@ import Footer from "@/components/Footer";
 
 export default async function Home() {
   // Fetch the data
+  const apples = await fetch("http://localhost:3000/data/fruits/apples.json");
+  const appleData = await apples.json();
+
+  const eggs = await fetch("http://localhost:3000/data/diary/eggs.json");
+  const eggData = await eggs.json();
+
+  const buns = await fetch("http://localhost:3000/data/bakery/buns.json");
+  const bunData = await buns.json();
+
+  const chicken = await fetch(
+    "http://localhost:3000/data/meat/poultry/chicken/dark.json"
+  );
+  const chickenData = await chicken.json();
+
+  const milk = await fetch("http://localhost:3000/data/diary/milk.json");
+  const milkData = await milk.json();
+
+  const pasta = await fetch("http://localhost:3000/data/diary/pasta.json");
+  const pastaData = await pasta.json();
+
+  const salmon = await fetch("http://localhost:3000/data/seafood/salmon.json");
+  const salmonData = await salmon.json();
+
+  const celery = await fetch("http://localhost:3000/data/veggies/celery.json");
+  const celeryData = await celery.json();
+
+  const lettuce = await fetch(
+    "http://localhost:3000/data/veggies/lettuce.json"
+  );
+  const lettuceData = await lettuce.json();
+
+  const mushrooms = await fetch(
+    "http://localhost:3000/data/veggies/mushrooms.json"
+  );
+  const mushroomsData = await mushrooms.json();
+
+  const randomArray1 = [appleData[0], eggData[0], bunData[0]];
+  const randomArray2 = [chickenData[0], milkData[0], salmonData[0]];
+  const randomArray3 = [celeryData[0], lettuceData[0], mushroomsData[0]];
 
   return (
     <main className="flex min-h-screen bg-background-500 flex-col">
@@ -45,7 +85,7 @@ export default async function Home() {
             you can get them all use our website
           </p>
           <Button className="bg-primary shadow-custom-medium-red w-32">
-            Shop Now
+            <Link href="/shop">Shop Now</Link>
             <FaArrowRightLong size={20} className="pl-2"></FaArrowRightLong>
           </Button>
           <p className="font-bold pt-10">You can also download now on</p>
@@ -89,8 +129,11 @@ export default async function Home() {
               wide human capital holistic.
             </p>
             <Button className="bg-third w-32">
-              Shop Now{" "}
-              <FaArrowRightLong className="pl-2" size={25}></FaArrowRightLong>{" "}
+              <Link href="/shop">Shop Now</Link>
+              <FaArrowRightLong
+                className="pl-2"
+                size={25}
+              ></FaArrowRightLong>{" "}
             </Button>
           </div>
           <div className="flex flex-1 justify-center items-center">
@@ -110,15 +153,18 @@ export default async function Home() {
           </p>
 
           <Button className="bg-primary w-32">
-            Shop Now{" "}
-            <FaArrowRightLong className="pl-2" size={25}></FaArrowRightLong>{" "}
+            <Link href="/shop">Shop Now</Link>
+            <FaArrowRightLong
+              className="pl-2"
+              size={25}
+            ></FaArrowRightLong>{" "}
           </Button>
         </div>
       </div>
 
       {/* Sale/Trending Section */}
 
-      {/* <div className="flex flex-row w-full items-center justify-center gap-40 pb-10 pt-10 ">
+      <div className="flex flex-row w-full items-center justify-center gap-40 pb-10 pt-10 ">
         <Tabs
           defaultValue="NewArrivals"
           className="w-[400px] bg-background-100 shadow-lg rounded-xl "
@@ -130,25 +176,25 @@ export default async function Home() {
           </TabsList>
           <TabsContent value="NewArrivals">
             <div className="flex flex-col pl-4 gap-2">
-              <StarCard></StarCard>
-              <StarCard></StarCard>
-              <StarCard></StarCard>
+              {randomArray1.map((item, index) => (
+                <StarCard key={index} item={item}></StarCard>
+              ))}
             </div>
           </TabsContent>
           <TabsContent value="Trending">
             {" "}
             <div className="flex flex-col pl-4 gap-2">
-              <StarCard></StarCard>
-              <StarCard></StarCard>
-              <StarCard></StarCard>
+              {randomArray2.map((item, index) => (
+                <StarCard key={index} item={item}></StarCard>
+              ))}
             </div>
           </TabsContent>
           <TabsContent value="BestSelling">
             {" "}
             <div className="flex flex-col pl-4 gap-2">
-              <StarCard></StarCard>
-              <StarCard></StarCard>
-              <StarCard></StarCard>
+              {randomArray3.map((item, index) => (
+                <StarCard key={index} item={item}></StarCard>
+              ))}
             </div>
           </TabsContent>
         </Tabs>
@@ -189,11 +235,11 @@ export default async function Home() {
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
 
       {/* Browsing Cat */}
 
-      {/* <div className="flex flex-col items-center pt-10 pb-10 gap-4">
+      <div className="flex flex-col items-center pt-10 pb-10 gap-4">
         <p className="text-4xl font-bold">Browse Our Catelogue</p>
         <p className="text-slate-400">Checkout some of our produce!</p>
         <div className="flex flex-row mt-4 gap-4">
@@ -238,10 +284,10 @@ export default async function Home() {
             <p className="text-slate-500 text-sm">20+ Items</p>
           </div>
         </div>
-      </div> */}
+      </div>
 
       {/* Customer Feedback */}
-      {/* <div className="flex flex-col items-center pt-10 gap-4 bg-green-100 ">
+      <div className="flex flex-col items-center pt-10 gap-4 bg-green-100 ">
         {" "}
         <p className="text-4xl font-bold">Our Customer Feedback</p>
         <p className="text-slate-400">
@@ -379,9 +425,9 @@ export default async function Home() {
             <CarouselNext className="hover:bg-primary transition-colors ease-in duration-200" />
           </Carousel>
         </div>
-      </div> */}
+      </div>
 
-      {/* <Footer></Footer> */}
+      <Footer></Footer>
     </main>
   );
 }

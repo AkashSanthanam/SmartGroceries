@@ -1,5 +1,8 @@
-
 import CategoriesBar from "@/components/CategoriesBar";
+import Footer from "@/components/Footer";
+
+
+const columns = 6;
 export default function ShopLayout({
   children, // will be a page or nested layout
 }) {
@@ -12,6 +15,7 @@ export default function ShopLayout({
       </div>
 
       {children}
+      <Footer></Footer>
     </section>
   );
 }

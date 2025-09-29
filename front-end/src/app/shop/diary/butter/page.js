@@ -9,25 +9,15 @@ import {
 import { Button } from "@/components/ui/button";
 
 import ProductCard from "@/components/ProductCard";
+import { block, margarine, spread } from "../../../../../public/data/butter";
 
+const columns = 6;
 export default async function Page() {
-  const block = await fetch(
-    "http://localhost:3000/data/diary/butter/block.json"
-  );
-  const blockData = await block.json();
-  const limitedBlockData = blockData.slice(0, 8);
+  const limitedBlockData = block.slice(0, 8);
 
-  const cream = await fetch(
-    "http://localhost:3000/data/diary/butter/margarine.json"
-  );
-  const creamData = await cream.json();
-  const limitedCreamData = creamData.slice(0, 8);
+  const limitedCreamData = margarine.slice(0, 8);
 
-  const spread = await fetch(
-    "http://localhost:3000/data/diary/butter/spread.json"
-  );
-  const spreadData = await spread.json();
-  const limitedSpreadData = spreadData.slice(0, 8);
+  const limitedSpreadData = spread.slice(0, 8);
 
   const columns = 6;
   return (
